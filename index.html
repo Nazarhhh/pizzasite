@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Піцерія "Numero Uno"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      margin: 0;
+      background-image: url('https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #333;
+    }
+
+    header, footer {
+      background: rgba(255, 102, 0, 0.95);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 15px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+
+    .menu-section h2 {
+      border-bottom: 2px solid #ffa64d;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.01);
+    }
+
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    label {
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    button {
+      background: #ff6600;
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #e65c00;
+    }
+
+    .total {
+      font-size: 1.2em;
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff8ee;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 600px) {
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Піцерія "Numero Uno"</h1>
+    <p>🎉 До відкриття – знижка 30% на все меню!</p>
+  </header>
+
+  <div class="container">
+    <form id="orderForm" class="menu-section">
+      <h2>🍕 Піци</h2>
+      <div class="item">
+        <img src="https://th.bing.com/th/id/OIP.D7iF4SPW5e2l737aamg4bQHaHa?cb=iwc2&rs=1&pid=ImgDetMain" alt="Маргарита">
+        <label><input type="checkbox" value="120"> Маргарита – 120 грн</label>
+      </div>
+      <div class="item">
+        <img src="https://www.moi-sushi.com.ua/wp-content/uploads/2022/08/peperoni.jpg" alt="Пепероні">
+        <label><input type="checkbox" value="135"> Пепероні – 135 грн</label>
+      </div>
+      <div class="item">
+        <img src="https://pizzahouse.ua/_next/image?url=https:%2F%2Fpizzahouse.ua%2Fmedia%2F4864%2Fconversions%2F%D1%87%D0%BE%D1%82%D0%B8%D1%80%D0%B8-%D1%81%D0%B8%D1%80%D0%B8-large.webp&w=3840&q=100" alt="Чотири сири">
+        <label><input type="checkbox" value="150"> Чотири сири – 150 грн</label>
+      </div>
+
+      <h2>🥖 Закуски</h2>
+      <div class="item">
+        <img src="https://friendscafe.com.ua/wp-content/uploads/2021/01/kiltsia-z-tsybuli.jpg" alt="Палички">
+        <label><input type="checkbox" value="60"> Цибулеві кільця – 60 грн</label>
+      </div>
+      <div class="item">
+        <img src="https://barbaraannsnc.com/wp-content/uploads/2023/03/kisspng-fish-and-chips-french-fries-moules-frites-panada-r-snacks-fries-french-fries-5a82cf27418957.9034635915185221512685-400x400.png" alt="Фрі">
+        <label><input type="checkbox" value="70"> Картопля фрі – 70 грн</label>
+      </div>
+
+      <h2>🥤 Напої</h2>
+      <div class="item">
+        <img src="https://bromart.kz/wp-content/uploads/2024/05/1c3e392cd4e5405aa9d0216bcb1e8233.jpg" alt="Кола">
+        <label><input type="checkbox" value="30"> Coca-Cola – 30 грн</label>
+      </div>
+      <div class="item">
+        <img src="https://th.bing.com/th/id/OIP.SqIgRi8-Q7SiP-XTOKTWmwHaFj?cb=iwc2&rs=1&pid=ImgDetMain" alt="Сік">
+        <label><input type="checkbox" value="25"> Соки – 25 грн</label>
+      </div>
+
+      <button type="button" onclick="calculateTotal()">Розрахувати суму</button>
+
+      <div class="total" id="totalOutput">Сума: 0 грн</div>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Піцерія "Numero Uno" | м. Звягель
+  </footer>
+
+  <script>
+    function calculateTotal() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      let total = 0;
+      checkboxes.forEach(item => {
+        total += parseFloat(item.value);
+      });
+
+      const discount = 0.30; // 30%
+      const discountedTotal = total * (1 - discount);
+
+      document.getElementById("totalOutput").innerText =
+        `Сума без знижки: ${total} грн\nСума зі знижкою 30%: ${discountedTotal.toFixed(2)} грн`;
+    }
+  </script>
+
+</body>
+</html>
